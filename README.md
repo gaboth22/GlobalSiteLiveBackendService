@@ -29,7 +29,7 @@ https://url-to-media.ts
 ```
 
 Here, we parse the file, we get the video chunks in order, download them, and transcode them from the original transport stream MPEG-2 to H.264.
-This also serves them locally on a desginated port, which defaults to 8000, under localhost/video/#.mp4, starting at video 0.mp4 for the first one we download.
+This also serves them locally on a desginated port, which defaults to 8000, under localhost:PORT/video/#.mp4, starting at video 0.mp4 for the first one we download.
 
 # Run
 
