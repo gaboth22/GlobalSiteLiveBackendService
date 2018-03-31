@@ -4,7 +4,7 @@ import requests
 import unicodedata
 import time
 
-class YoutubeLivePlaylistParser:
+class YoutubeLivePlaylist:
 
    def __init__(self):
       self.current_playlist_sequence_end_number = 0
