@@ -22,7 +22,6 @@ def serve_video(args):
    while(not kill_event.is_set()):
       server.handle_requests()
 
-
 def download_video_chunks(args):
    youtube_link = args[1]
    desired_size = args[2]
