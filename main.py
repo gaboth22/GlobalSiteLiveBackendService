@@ -24,8 +24,8 @@ def serve_video(args):
 
 def download_video_chunks(args):
    youtube_link = args[1]
-   desired_size = args[2]
-   live_stream_url = youtube.get_live_stream_playlist_url_by_size(youtube_link, desired_size)
+   desired_format = args[2]
+   live_stream_url = youtube.get_live_stream_playlist_url_by_format(youtube_link, desired_format)
    video_output_path = 'video'
 
    if(os.path.exists(video_output_path)):

@@ -33,4 +33,4 @@ This also serves them locally on a desginated port, which defaults to 8000, unde
 
 # Run
 
-`python main.py https://www.youtube.com/watch?v=VIDEO-ID 640x360 8000`
+`python main.py https://www.youtube.com/watch?v=VIDEO-ID 93 8000` 93 being the video format corresponding to 640x360 in youtube
