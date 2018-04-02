@@ -29,18 +29,8 @@ https://url-to-media.ts
 ```
 
 Here, we parse the file, we get the video chunks in order, download them, and transcode them from the original transport stream MPEG-2 to H.264.
-The naming convention starts at 0.mp4 for the first video we download.
+This also serves them locally on a desginated port, which defaults to 8000, under localhost:PORT/video/#.mp4, starting at video 0.mp4 for the first one we download.
 
 # Run
 
-`python main.py https://www.youtube.com/watch?v=VIDEO-ID 93` 93 being the video format corresponding to 640x360 in youtube
-
-## Formats:
-```
-91 - 256x144
-92 - 426x240
-93 - 640x360
-94 - 854x480
-95 - 1280x720
-96 - 1920x1080
-```
+`python main.py https://www.youtube.com/watch?v=VIDEO-ID 93 8000` 93 being the video format corresponding to 640x360 in youtube

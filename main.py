@@ -2,6 +2,7 @@
 
 import Youtube as yt
 import YoutubeLivePlaylist as ylp
+import VideoServer as vs
 import os
 import sys
 import signal
@@ -9,6 +10,17 @@ import shutil
 import time
 from threading import Thread
 from threading import Event
+
+def serve_video(args):
+   port = 8000
+
+   if(len(args) == 4):
+      port = int(args[3])
+
+   server.initialize_on_port(port)
+
+   while(not kill_event.is_set()):
+      server.handle_requests()
 
 def download_video_chunks(args):
    youtube_link = args[1]
@@ -36,22 +48,18 @@ def download_video_chunks(args):
 
 def main(cmd_args):
    if('help' in cmd_args[1] or cmd_args[1] == '-h'):
-      print "First arguments is the youtube video URL including https://, second argument the video format e.g. 93"
-      print    """ In general, available formats are:
-                  '91 - 256x144'
-                  '92 - 426x240'
-                  '93 - 640x360'
-                  '94 - 854x480'
-                  '95 - 1280x720'
-                  '96 - 1920x1080'"""
+      print "First arguments is the youtube video URL, second argument the video size e.g. 640x360"
    
    if(len(cmd_args) < 3):
-      print "Must provide youtube video URL and video format. Pass help or -h for help."
+      print "Must provide youtube video URL and video size"
       return
 
    video_download_thread = Thread(target = download_video_chunks, args = (cmd_args, ))
+   video_server_thread = Thread(target = serve_video, args = (cmd_args, ))
    video_download_thread.start()
+   video_server_thread.start()
    video_download_thread.join()
+   video_server_thread.join()
 
 def exit_program(signum, frame):
    signal.signal(signal.SIGINT, original_sigint)
@@ -62,6 +70,7 @@ def exit_program(signum, frame):
 
 if __name__ == '__main__':
    kill_event = Event()
+   server = vs.VideoServer()
    youtube = yt.Youtube()
    playlist = ylp.YoutubeLivePlaylist()
    original_sigint = signal.getsignal(signal.SIGINT)
