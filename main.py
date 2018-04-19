@@ -2,7 +2,6 @@
 
 import Youtube as yt
 import YoutubeLivePlaylist as ylp
-import VideoServer as vs
 import os
 import sys
 import shutil
