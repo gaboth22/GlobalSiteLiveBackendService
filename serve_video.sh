@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-python ServeVideo.py $1
+python ServeVideo.py $1 $2
