@@ -13,7 +13,7 @@ def download_video_chunks(args):
    youtube_link = args[1]
    desired_format = args[2]
    live_stream_url = youtube.get_live_stream_playlist_url_by_format(youtube_link, desired_format)
-   video_output_path = 'video'
+   video_output_path = args[3]
 
    if(os.path.exists(video_output_path)):
       shutil.rmtree(video_output_path)
@@ -38,10 +38,10 @@ def download_video_chunks(args):
 
 def main(cmd_args):
    if('help' in cmd_args[1] or cmd_args[1] == '-h'):
-      print "First arguments is the youtube video URL, second argument the video size e.g. 640x360"
+      print "First argument is the youtube video URL, second argument the video format e.g. 93, third is output path"
    
    if(len(cmd_args) < 3):
-      print "Must provide youtube video URL and video size"
+      print "Must provide youtube video URL and video format"
       return
    
    download_video_chunks(cmd_args)
