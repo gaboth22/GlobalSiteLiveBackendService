@@ -37,4 +37,4 @@ def start_app():
    video_download_thread.start()
    video_server_thread.start()
 
-   return '', HTTP_200_OK
+   return 'Success', HTTP_200_OK

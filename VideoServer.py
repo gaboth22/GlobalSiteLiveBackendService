@@ -13,7 +13,6 @@ class VideoServer:
    def start(self, path_to_serve, port):
       while not os.path.isdir(path_to_serve):
          pass
-      os.chdir(path_to_serve)
       handler = SimpleHTTPServer.SimpleHTTPRequestHandler
       httpd = ReusableTCPServer(("", port), handler)
       print "Serving on port: ", port
