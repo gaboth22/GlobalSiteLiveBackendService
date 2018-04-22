@@ -7,6 +7,10 @@ import shutil
 import time
 
 class VideoChunkDownloader:
+   def clear_stale_data(self, video_output_path):
+      if(os.path.exists(video_output_path)):
+         shutil.rmtree(video_output_path)
+
    def start(self, youtube_link, desired_format, video_output_path):
       youtube = yt.Youtube()
       playlist = ylp.YoutubeLivePlaylist()
@@ -30,6 +34,6 @@ class VideoChunkDownloader:
                   video_number = video_number + 1
             else:
                print("Waiting for updated list...")
-               time.sleep(2.5)
+               time.sleep(1.5)
          except:
             pass

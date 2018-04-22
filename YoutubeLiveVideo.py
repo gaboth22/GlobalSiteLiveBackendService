@@ -27,6 +27,7 @@ def start_app():
    print 'Serving video on port: ' + str(serve_video_port)
 
    downloader = vcd.VideoChunkDownloader()
+   downloader.clear_stale_data(path_for_video)
    server = vs.VideoServer()
    video_download_thread = (
       Thread(target = download_video_chunks, args = (downloader, youtube_link, FORMAT_640x360, path_for_video,)))

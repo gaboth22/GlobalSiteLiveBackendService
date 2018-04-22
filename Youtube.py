@@ -47,7 +47,7 @@ class Youtube:
       #Android
       ff = FFmpeg(
          inputs  = {original_filename : None},
-         outputs = {video_name : ['-s', '640x360', '-vcodec', 'libx264', '-preset', 'ultrafast', '-r', '20', '-x264opts', 'frame-packing=3']}
+         outputs = {video_name : ['-an', '-s', '640x360', '-vcodec', 'libx264', '-preset', 'fast', '-r', '20', '-x264opts', 'frame-packing=3']}
       )
       print "ffmpeg command:"
       print ff.cmd
