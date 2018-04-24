@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-FLASK_APP=YoutubeLiveVideo.py flask run -p 50000
+FLASK_APP=BackendService.py flask run -p 50000
