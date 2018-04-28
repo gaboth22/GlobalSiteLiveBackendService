@@ -8,7 +8,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 HTTP_200_OK = 200
-FORMAT_640x360 = '93'
+FORMAT_720 = '94'
 
 def download_video_chunks(downloader, youtube_link, desired_format, video_output_path):
    downloader.start(youtube_link, desired_format, video_output_path)
@@ -41,7 +41,7 @@ def start_app():
    pdf.clear_stale_data(path_for_jpg_slides)
 
    video_download_thread = (
-      Thread(target = download_video_chunks, args = (downloader, youtube_link, FORMAT_640x360, path_for_video,)))
+      Thread(target = download_video_chunks, args = (downloader, youtube_link, FORMAT_720, path_for_video,)))
    video_download_thread.daemon = True
    video_server_thread = (
       Thread(target = serve_video, args = (server, path_for_video, serve_video_port,)))
